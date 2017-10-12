@@ -1,0 +1,97 @@
+<html>
+<head>
+    <script language="javascript">
+
+        ///添加消息信息
+        function SetText(json) {
+            alert(json);
+            if (json == null) return;
+            var data = eval("(" + json + ")");
+            var alignStr = data.result[0].alignStr;
+            var Name = data.result[0].name;
+            var Time = data.result[0].time;
+            var di = document.createElement('div');
+            di.style.setAttribute('text-align', alignStr);
+            di.style.setAttribute("padding", "0px");
+            di.style.setAttribute("margin", "0px");
+            di.style.setAttribute("width", "500px");
+            var diname = document.createElement('div');
+            diname.innerHTML = Name;
+            di.appendChild(diname);
+            var diTime = document.createElement('div');
+            diTime.innerHTML = Time;
+            di.appendChild(diTime);
+            var diText = document.createElement('div');
+
+            if (data.status == "1") {
+                var Text = data.result[0].text;
+                diText.innerHTML = Text;
+            } else
+            ///添加图片信息
+                if (data.status == "2") {
+                    var imgs = data.result[0].img;
+                    var images = document.createElement('img');
+                    images.setAttribute('src', imgs);
+                    images.attachEvent("onclick", function () { getSrc(images) });
+                    diText.appendChild(images);
+                } else
+                ///添加语音
+                    if (data.status == "3") {
+                        var FileName = data.result[0].filename;
+                        diText.style.setAttribute("width", "190px");
+                        diText.style.setAttribute("height", "32px");
+                        diText.style.setAttribute("background", "#f0ffff");
+                        diText.style.setAttribute("contenteditable", "false");
+                        diText.attachEvent('onclick', function () { getImgPlay(diText) });
+                        var images = document.createElement('img');
+                        images.name = "image";
+                        images.setAttribute('src', 'Resources/57.ico');
+                        images.setAttribute('alt', '0');
+                        images.setAttribute('width', '32px');
+                        images.setAttribute('height', '32px');
+                        images.id = FileName;
+                        diText.appendChild(images);
+                    }
+            di.appendChild(diText);
+            document.body.appendChild(di);
+        }
+
+
+
+
+        ///点击图片事件
+        function getSrc(src) {
+            window.external.ShowMessage(src);
+        }
+        ///点击语音播放切换图片
+        function getImgPlay(str) {
+            if (str.getElementsByTagName("image").length) {
+
+                var bof = str.getElementsByTagName("image")[0].alt;
+                if (bof == 0) {
+                    str.getElementsByTagName("image")[0].setAttribute('src', 'Resources/56.ico');
+                    str.getElementsByTagName("image")[0].setAttribute('alt', '1');
+                    window.external.ShowPay(str.getElementsByTagName("image")[0].id, str.getElementsByTagName("image")[0].alt);
+                }
+                else if (bof == 1) {
+                    str.getElementsByTagName("image")[0].setAttribute('src', 'Resources/57.ico');
+                    str.getElementsByTagName("image")[0].setAttribute('alt', '0');
+                    window.external.ShowPay(str.getElementsByTagName("image")[0].id, str.getElementsByTagName("image")[0].alt);
+                }
+
+            }
+        }
+        ///关闭语音播放
+        function getImgStop(FileName, Obj) {
+            var item = document.getElementById(FileName);
+            // alert(Obj);
+            item.setAttribute('src', 'play.ico');
+            item.setAttribute('alt', '0');
+        }
+
+    </script>
+</head>
+<body style="word-wrap: break-word; word-break: break-all; display: block; width: 100%;">
+    
+</body>
+</html>

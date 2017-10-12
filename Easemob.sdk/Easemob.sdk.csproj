@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B81C33D4-A905-4696-8BD2-1179A2DB6448}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Easemob</RootNamespace>
+    <AssemblyName>Easemob.sdk</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="agsXMPP">
+      <HintPath>..\libs\agsXMPP.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\libs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Audio\AudioConverter.cs" />
+    <Compile Include="Audio\AudioRecorder.cs" />
+    <Compile Include="JDI.Common\Collections\NameValueCollection.cs" />
+    <Compile Include="JDI.Common\Collections\NameValuePair.cs" />
+    <Compile Include="JDI.Common\Extensions\ArrayExtensions.cs" />
+    <Compile Include="JDI.Common\Extensions\IntExtensions.cs" />
+    <Compile Include="JDI.Common\Extensions\StringExtensions.cs" />
+    <Compile Include="JDI.Common\JDIConst.cs" />
+    <Compile Include="JDI.Common\Logger\DebugLogger.cs" />
+    <Compile Include="JDI.Common\Logger\FileLogger.cs" />
+    <Compile Include="JDI.Common\Logger\ILogger.cs" />
+    <Compile Include="JDI.Common\Logger\Logger.cs" />
+    <Compile Include="JDI.Common\Logger\LogLevel.cs" />
+    <Compile Include="JDI.Common\Net\SslStreamEx.cs" />
+    <Compile Include="JDI.Common\Net\UriEx.cs" />
+    <Compile Include="JDI.Common\Security\CryptoUtils.cs" />
+    <Compile Include="JDI.Common\TimerEx.cs" />
+    <Compile Include="JDI.Common\Utils\ArrayUtil.cs" />
+    <Compile Include="JDI.Common\Utils\ConvertEx.cs" />
+    <Compile Include="JDI.Common\Utils\DebugEx.cs" />
+    <Compile Include="JDI.Common\Utils\StringUtil.cs" />
+    <Compile Include="JDI.WebSocket.Client\WebSocketClient.cs" />
+    <Compile Include="JDI.WebSocket.Client\WebSocketState.cs" />
+    <Compile Include="JDI.WebSocket.Client\WSConst.cs" />
+    <Compile Include="JDI.WebSocket.Client\WSDelegates.cs" />
+    <Compile Include="JDI.WebSocket.Client\WSErrorCode.cs" />
+    <Compile Include="JDI.WebSocket.Client\WSFrame.cs" />
+    <Compile Include="JDI.WebSocket.Client\WSFrameQueue.cs" />
+    <Compile Include="JDI.WebSocket.Client\WSFrameType.cs" />
+    <Compile Include="JDI.WebSocket.Client\WSOptions.cs" />
+    <Compile Include="PostedFile\HttpRequestClient.cs" />
+    <Compile Include="PostedFile\PostedFileManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SdkUtils.cs" />
+    <Compile Include="XmppWebSocket\Init\XmppInit.cs" />
+    <Compile Include="XmppWebSocket\Mechanisms\MechanismFactory.cs" />
+    <Compile Include="PostedFile\PostedFileResp.cs" />
+    <Compile Include="XmppWebSocket\Protocol\Acked.cs" />
+    <Compile Include="XmppWebSocket\Init\ProtocolRegister.cs" />
+    <Compile Include="XmppWebSocket\Protocol\Received.cs" />
+    <Compile Include="XmppWebSocket\Protocol\WSDelay.cs" />
+    <Compile Include="XmppWebSocket\Protocol\WSMessage.cs" />
+    <Compile Include="XmppWebSocket\Grabbers\WSMessageGrabber.cs" />
+    <Compile Include="XmppWebSocket\Protocol\MsgBody.cs" />
+    <Compile Include="XmppWebSocket\Grabbers\WSPacketGrabber.cs" />
+    <Compile Include="XmppWebSocket\Grabbers\WSPresenceGrabber.cs" />
+    <Compile Include="XmppWebSocket\WSPresenceManager.cs" />
+    <Compile Include="XmppWebSocket\WSRosterManager.cs" />
+    <Compile Include="XmppWebSocket\Grabbers\WSIqGrabber.cs" />
+    <Compile Include="XmppWebSocket\Mechanisms\WSMechanism.cs" />
+    <Compile Include="XmppWebSocket\Mechanisms\WSPlainMechanism.cs" />
+    <Compile Include="XmppWebSocket\XmppWebSocketConnection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="conv\ffmpeg.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
